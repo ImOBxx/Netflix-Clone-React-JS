@@ -1,0 +1,207 @@
+/* Swiper Navigation Buttons with Upside-Down Rectangular Background */
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px; /* Width of the button */
+  height: 223px; /* Height of the background rectangle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); /* Upside-down gradient */
+  opacity: 0.7; /* Transparency */
+  border-radius: 4px; /* Optional: Slight rounded corners */
+  z-index: 10;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 1; /* Fully visible on hover */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent); /* Darker gradient on hover */
+    transform: translateY(-50%) scale(1.05); /* Slight scale-up effect */
+  }
+}
+
+/* Left and Right Positions */
+.swiper-button-prev {
+  left: 10px; /* Position to the left */
+}
+
+.swiper-button-next {
+  right: 10px; /* Position to the right */
+}
+
+/* Swiper Arrow Styling */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 1.5rem; /* Adjust arrow size */
+  color: white; /* White arrow icons */
+  font-weight: bold;
+}
+
+/* Adjust for Smaller Screens */
+@media (max-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 40px; /* Smaller buttons on smaller screens */
+    height: 80px;
+  }
+}
+
+/* Swiper Pagination Styling */
+.swiper-pagination {
+  position: initial; /* Ensure it is positioned relative to Swiper */
+  top: 0; /* Align to the top */
+  right: 10px; /* Align bullets to the right */
+  z-index: 100; /* Place on top of other elements */
+  display: flex !important;
+  justify-content: flex-end; /* Push bullets to the right */
+  gap: 0px; /* Adjust spacing between bullets */
+}
+
+/* Inactive bullets */
+.swiper-pagination-bullet {
+  cursor: pointer;
+  width: 10px; /* Bullet width */
+  height: 3px; /* Bullet height */
+  display: inline-block;
+  background-color: hsl(0deg 0% 30%); /* Grey color */
+  border-radius: 0; /* Rectangular shape */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Active bullet styling */
+.swiper-pagination-bullet-active {
+  background-color: white; /* White active bullet */
+  transform: scale(1.2); /* Slightly enlarge active bullet */
+}
+
+/* Swiper Wrapper */
+.swiper-wrapper {
+  padding: 40px 0;
+  gap: 8px; /* Space between slides */
+  margin-bottom: 0; /* Remove extra space below */
+
+  &:hover .swiper-slide {
+    transform: translateX(-17%);
+    z-index: -1;
+  }
+
+  .swiper-slide:hover {
+    z-index: 5;
+    transform: scale(1.5); /* Larger scale on hover */
+  }
+}
+
+/* Swiper Slides */
+.swiper-slide {
+  padding: 0; /* Remove padding if applied */
+  border-radius: 12px; /* Rounded corners */
+  overflow: hidden; /* Ensure content respects border-radius */
+  transition: transform 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+
+  &:hover {
+    z-index: 20;
+    transform: scale(1.1); /* Slight scale-up effect */
+    cursor: pointer;
+  }
+
+  &:hover img {
+    border-radius: 12px; /* Maintain rounded corners on hover */
+    transform: scale(1.1); /* Slight zoom effect on image */
+  }
+
+  &:first-child:hover {
+    margin: 0 75px;
+  }
+
+  &:last-child:hover {
+    margin: 0 -75px;
+  }
+}
+
+/* Large Swiper Slide */
+.swiper-slide.large {
+  &:hover {
+    transform: scale(1.2) !important;
+  }
+}
+/* Change genre color on hover */
+.swiper-slide:hover .content span {
+  color: red; /* Red color for genres on hover */
+}
+
+/* Hover to Display Content */
+.swiper-slide:hover .content {
+  display: block;
+  bottom: 0;
+}
+
+/* Content Container */
+.content {
+  transition: all 0.5s;
+  background: linear-gradient(0.05turn, rgba(0, 0, 0, 0.871), rgba(0, 0, 0, 0.023) 65%);
+  position: absolute;
+  bottom: -1.25rem;
+  left: 0;
+  width: 100%;
+  padding: 1rem 0; /* Top and bottom padding */
+  display: none;
+  box-sizing: border-box;
+
+  h1 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    color: white;
+  }
+
+  span {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+
+    div {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid rgba(255, 0, 0, 0.8);
+      border-radius: 50%;
+      color: white;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: rgba(255, 0, 0, 0.7);
+        color: black;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+  .swiper-slide {
+    border-radius: 8px; /* Smaller radius for mobile */
+  }
+
+  .YouTubeVid iframe {
+    height: 13rem; /* Adjust video height for smaller screens */
+  }
+}
+
+@media (min-width: 1600px) {
+  .swiper-wrapper {
+    gap: 4px; /* Reduce gap for full-screen display */
+  }
+}
